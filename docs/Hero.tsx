@@ -1,15 +1,17 @@
 import cx from 'classnames'
 import { forwardRef, useEffect, useRef, useState } from 'react'
-import { animated, config, useSpring } from 'react-spring'
+import { animated, config, useSpring } from '@react-spring/web'
 import styles from './Hero.module.css'
 
 const subtitle = 'Accessible, Delightful, and Performant'
 
-const Link: React.FC<{
-  href?: string
-  target?: string
-  className?: string
-}> = forwardRef(
+const Link: React.FC<
+  React.PropsWithChildren<{
+    href?: string
+    target?: string
+    className?: string
+  }>
+> = forwardRef(
   ({ children, className, ...props }, ref: React.Ref<HTMLAnchorElement>) => (
     <a
       {...props}
@@ -41,7 +43,9 @@ const Links = ({ className }: { className?: string }) => (
   </>
 )
 // The wrapping in <g> is because of Safari 🙄 https://bug-149617-attachments.webkit.org/attachment.cgi?id=262048
-const SvgText: React.FC<{ x?: string; y?: string; className?: string }> = ({
+const SvgText: React.FC<
+  React.PropsWithChildren<{ x?: string; y?: string; className?: string }>
+> = ({
   children,
   className,
   x = '23',
@@ -127,7 +131,7 @@ export default function Hero({ className }: { className?: string }) {
             />
             <animated.path
               style={{
-                fill: state.interpolate({ output: ['#fed7e6', '#FC9EC2'] }),
+                fill: state.to({ output: ['#fed7e6', '#FC9EC2'] }),
               }}
               fillRule="evenodd"
               clipRule="evenodd"
@@ -140,10 +144,10 @@ export default function Hero({ className }: { className?: string }) {
               style={{
                 ['--tw-translate-y' as any]: y,
                 /*
-                ['--tw-scale-x' as any]: state.interpolate({
+                ['--tw-scale-x' as any]: state.to({
                   output: [0.9, 1],
                 }),
-                ['--tw-scale-y' as any]: state.interpolate({
+                ['--tw-scale-y' as any]: state.to({
                   output: [0.9, 1],
                 }),
                 // */

@@ -29,10 +29,10 @@ export default function MetaTags({
 
   return (
     <Head>
-      <title key="title">
-        {title ? `${title} | ` : null}
-        {props['og:site_name'] ?? name}
-      </title>
+      {/* Single template string: React 19 rejects an array of children on <title> */}
+      <title key="title">{`${title ? `${title} | ` : ''}${
+        props['og:site_name'] ?? name
+      }`}</title>
       {description && (
         <meta key="description" name="description" content={description} />
       )}

@@ -11,7 +11,8 @@ export default function FaviconsPlaygroundPage() {
     'favicon-white',
     'favicon-rounded',
   ].map((icon) => (
-    <div
+    <button
+      type="button"
       key={icon}
       onClick={() => setToggle((toggle) => !toggle)}
       className={cx(
@@ -25,6 +26,6 @@ export default function FaviconsPlaygroundPage() {
       <img src={`/${icon}.svg`} height="16" width="16" />
       <img src={`/${icon}.svg`} height="32" width="32" />
       <img src={`/${icon}.svg`} height="64" width="64" />
-    </div>
+    </button>
   ))
 }

@@ -6,11 +6,9 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { ResizeObserver, ResizeObserverEntry } from '@juggle/resize-observer'
 import type { defaultSnapProps, ResizeSource, snapPoints } from '../types'
 import { processSnapPoints, roundAndCheckForNaN } from '../utils'
 import { useReady } from './useReady'
-import { ResizeObserverOptions } from '@juggle/resize-observer/lib/ResizeObserverOptions'
 import { useLayoutEffect } from './useLayoutEffect'
 
 export function useSnapPoints({
@@ -167,6 +165,24 @@ const observerOptions: ResizeObserverOptions = {
   // And the user hides or shows the Safari browser toolbar
   box: 'border-box',
 }
+
+// `borderBoxSize` is reported as an array by the spec, but Firefox < 92 hands back
+// a bare object. Normalizing here keeps the measurement correct on both.
+function getBlockSize(entry: ResizeObserverEntry): number {
+  const borderBoxSize = entry.borderBoxSize as
+    | readonly ResizeObserverSize[]
+    | ResizeObserverSize
+    | undefined
+
+  if (Array.isArray(borderBoxSize)) {
+    return borderBoxSize[0].blockSize
+  }
+  if (borderBoxSize) {
+    return (borderBoxSize as ResizeObserverSize).blockSize
+  }
+  // Last resort for anything that only implements `contentRect`
+  return entry.contentRect.height
+}
 /**
  * Hook for determining the size of an element using the Resize Observer API.
  *
@@ -184,14 +200,14 @@ function useElementSizeObserver(
     resizeSourceRef: React.MutableRefObject<ResizeSource>
   }
 ): number {
-  let [size, setSize] = useState(0)
+  const [size, setSize] = useState(0)
 
   useDebugValue(`${label}: ${size}`)
 
   const handleResize = useCallback(
     (entries: ResizeObserverEntry[]) => {
       // we only observe one element, so accessing the first entry here is fine
-      setSize(entries[0].borderBoxSize[0].blockSize)
+      setSize(getBlockSize(entries[0]))
       resizeSourceRef.current = 'element'
     },
     [resizeSourceRef]

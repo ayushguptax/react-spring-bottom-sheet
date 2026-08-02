@@ -122,14 +122,43 @@
   padding-bottom: calc(16px + env(safe-area-inset-bottom));
 }
 
-[data-rsbs-is-dismissable='true'],
-[data-rsbs-is-dismissable='false']:matches([data-rsbs-state='opening'], [data-rsbs-state='closing']) {
-  & :matches([data-rsbs-header], [data-rsbs-scroll], [data-rsbs-footer]) > * {
-    opacity: var(--rsbs-content-opacity);
-  }
-  & [data-rsbs-backdrop] {
-    opacity: var(--rsbs-backdrop-opacity);
-  }
+/* Written out in full rather than with `:matches()` + nesting.
+   `:matches()` was a prerelease name that no browser ever shipped, so these rules
+   only worked because postcss-preset-env rewrote them — importing this stylesheet
+   through any other pipeline silently dropped the content and backdrop fades.
+   `:is()` isn't an option either: preset-env is too old to lower it, and it needs
+   Chrome 88 / Safari 14, above the browserslist floor. This expansion is exactly
+   what the build was emitting, and needs no plugin at all. */
+[data-rsbs-is-dismissable='true'] [data-rsbs-header] > *,
+[data-rsbs-is-dismissable='true'] [data-rsbs-scroll] > *,
+[data-rsbs-is-dismissable='true'] [data-rsbs-footer] > *,
+[data-rsbs-is-dismissable='false'][data-rsbs-state='opening']
+  [data-rsbs-header]
+  > *,
+[data-rsbs-is-dismissable='false'][data-rsbs-state='closing']
+  [data-rsbs-header]
+  > *,
+[data-rsbs-is-dismissable='false'][data-rsbs-state='opening']
+  [data-rsbs-scroll]
+  > *,
+[data-rsbs-is-dismissable='false'][data-rsbs-state='closing']
+  [data-rsbs-scroll]
+  > *,
+[data-rsbs-is-dismissable='false'][data-rsbs-state='opening']
+  [data-rsbs-footer]
+  > *,
+[data-rsbs-is-dismissable='false'][data-rsbs-state='closing']
+  [data-rsbs-footer]
+  > * {
+  opacity: var(--rsbs-content-opacity);
+}
+
+[data-rsbs-is-dismissable='true'] [data-rsbs-backdrop],
+[data-rsbs-is-dismissable='false'][data-rsbs-state='opening']
+  [data-rsbs-backdrop],
+[data-rsbs-is-dismissable='false'][data-rsbs-state='closing']
+  [data-rsbs-backdrop] {
+  opacity: var(--rsbs-backdrop-opacity);
 }
 
 [data-rsbs-state='closed'],

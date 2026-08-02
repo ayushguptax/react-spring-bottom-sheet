@@ -1,4 +1,4 @@
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock-upgrade'
 import { useDebugValue, useEffect, useRef } from 'react'
 
 /**
@@ -17,7 +17,7 @@ export function useScrollLock({
   enabled,
   reserveScrollBarGap,
 }: {
-  targetRef: React.RefObject<Element>
+  targetRef: React.RefObject<HTMLElement>
   enabled: boolean
   reserveScrollBarGap: boolean
 }) {
@@ -45,7 +45,8 @@ export function useScrollLock({
         if (active) return
         active = true
         disableBodyScroll(target, {
-          allowTouchMove: (el) => el.closest('[data-body-scroll-lock-ignore]'),
+          allowTouchMove: (el) =>
+            !!(el as Element).closest?.('[data-body-scroll-lock-ignore]'),
           reserveScrollBarGap,
         })
       },

@@ -1,5 +1,3 @@
-/* eslint-disable no-self-compare */
-
 // stolen from lodash
 export function clamp(number: number, lower: number, upper: number) {
   number = +number
@@ -63,3 +61,13 @@ export const debugging =
   process.env.NODE_ENV === 'development' && typeof window !== 'undefined'
     ? window.location.search === '?debug'
     : false
+
+/**
+ * xstate v5 has no global devtools hook, inspectors are passed per actor. The docs
+ * site parks a Stately inspector on this global when the page is loaded with
+ * `?debug`, so the library can stay free of any inspector dependency.
+ */
+export function getInspector() {
+  if (!debugging || typeof window === 'undefined') return undefined
+  return (window as any).__rsbsInspect
+}

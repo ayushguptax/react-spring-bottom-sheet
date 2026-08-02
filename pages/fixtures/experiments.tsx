@@ -88,10 +88,7 @@ function Two() {
             Dismiss
           </Button>
         }
-        defaultSnap={({ headerHeight, footerHeight, minHeight }) =>
-          //headerHeight + footerHeight
-          minHeight
-        }
+        defaultSnap={({ minHeight }) => minHeight}
         snapPoints={({ minHeight, headerHeight, footerHeight }) => [
           headerHeight + footerHeight,
           minHeight,
@@ -417,7 +414,7 @@ function Ten() {
 function Eleven() {
   const [open, setOpen] = useState(false)
   const [height, setHeight] = useState(undefined)
-  const sheetRef = useRef<BottomSheetRef>()
+  const sheetRef = useRef<BottomSheetRef>(null)
 
   return (
     <>
@@ -476,7 +473,7 @@ function Eleven() {
 
 function Twelve() {
   const [open, setOpen] = useState(false)
-  const sheetRef = useRef<BottomSheetRef>()
+  const sheetRef = useRef<BottomSheetRef>(null)
   const [height, setHeight] = useState(0)
 
   return (

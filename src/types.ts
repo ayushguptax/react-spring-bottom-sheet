@@ -150,7 +150,7 @@ export type Props = {
    * @default expandOnContentDrag === false
    */
   expandOnContentDrag?: boolean,
-} & Omit<React.PropsWithoutRef<JSX.IntrinsicElements['div']>, 'children'>
+} & Omit<React.PropsWithoutRef<React.JSX.IntrinsicElements['div']>, 'children'>
 
 export interface RefHandles {
   /**

@@ -9,9 +9,11 @@
 ## What's changed
 
 - Updated peer dependencies to include React 19
+- Migrated off dependencies that blocked React 19: `@xstate/react` v1 (peer-capped at React 17) is now v6 on xstate v5, `react-spring` v8 is now `@react-spring/web` v10, `react-use-gesture` is now `@use-gesture/react` v10, and `@reach/portal` is replaced by `react-dom`'s `createPortal`
+- `body-scroll-lock` swapped for the maintained `body-scroll-lock-upgrade` fork, and the `@juggle/resize-observer` ponyfill dropped for the native API
 - Fully tested with latest dependencies
 
-**@percivel/react-spring-bottom-sheet** is built on top of **[react-spring]** and **[react-use-gesture]**. It combines accessibility with delightful animations and full keyboard/screen reader support. All animations use CSS custom properties to allow complete styling control from CSS alone.
+**@percivel/react-spring-bottom-sheet** is built on top of **[@react-spring/web]** and **[@use-gesture/react]**. It combines accessibility with delightful animations and full keyboard/screen reader support. All animations use CSS custom properties to allow complete styling control from CSS alone.
 
 > Fork of [react-spring-bottom-sheet](https://github.com/stipsan/react-spring-bottom-sheet) updated to support **React 19**.
 
@@ -137,13 +139,13 @@ In most cases you use a bottom sheet the same way you do with a dialog: you want
 ## props
 
 All props you provide, like `className`, `style` props or whatever else are spread onto the underlying `<animated.div>` instance, that you can style in your custom CSS using this selector: `[data-rsbs-root]`.
-Just note that the component is mounted in a `@reach/portal` at the bottom of `<body>`, and not in the DOM hierarchy you render it in.
+Just note that the component is mounted in a `<div data-rsbs-portal>` appended to the bottom of `<body>`, and not in the DOM hierarchy you render it in.
 
 ### open
 
 Type: `boolean`
 
-The only required prop, beyond `children`. And it's controlled, so if you don't set this to `false` then it's not possible to close the bottom sheet. It's worth knowing that the bottom sheet won't render anything but a `@reach/dialog` placeholder while `open` is `false`. Thus ensure your components behave as expected with being unmounted when the sheet closed. We can't really allow it to render and mount while in a closed/hidden position as there's no stable way of preventing keyboard users or screen readers from accidentally interacting with the closed bottom sheet as long as it's in the dom. This is especially problematic given it implements ARIA to optimize for a11y.
+The only required prop, beyond `children`. And it's controlled, so if you don't set this to `false` then it's not possible to close the bottom sheet. It's worth knowing that the bottom sheet won't render anything at all while `open` is `false`. Thus ensure your components behave as expected with being unmounted when the sheet closed. We can't really allow it to render and mount while in a closed/hidden position as there's no stable way of preventing keyboard users or screen readers from accidentally interacting with the closed bottom sheet as long as it's in the dom. This is especially problematic given it implements ARIA to optimize for a11y.
 
 ### onDismiss
 
@@ -438,5 +440,5 @@ export default function Example() {
 [size-badge]: http://img.badgesize.io/https://unpkg.com/react-spring-bottom-sheet/dist/index.es.js?label=size&style=flat-square
 [unpkg-dist]: https://unpkg.com/react-spring-bottom-sheet/dist/
 [module-formats-badge]: https://img.shields.io/badge/module%20formats-cjs%2C%20es%2C%20modern-green.svg?style=flat-square
-[react-spring]: https://github.com/pmndrs/react-spring
-[react-use-gesture]: https://github.com/pmndrs/react-use-gesture
+[@react-spring/web]: https://github.com/pmndrs/react-spring
+[@use-gesture/react]: https://github.com/pmndrs/use-gesture

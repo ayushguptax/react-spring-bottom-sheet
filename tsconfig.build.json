@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // The base config targets es5 with `jsx: preserve` for Next. esbuild reads
+    // both, and would refuse to lower destructuring to es5 and would emit raw
+    // JSX into the published bundle. The library is built for the browserslist
+    // targets instead, with the classic React.createElement transform.
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react",
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "incremental": false
+  },
+  "include": ["src"]
+}

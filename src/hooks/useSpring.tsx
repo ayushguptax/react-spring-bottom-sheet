@@ -1,4 +1,4 @@
-import { useSpring as useReactSpring } from 'react-spring'
+import { useSpring as useReactSpring } from '@react-spring/web'
 
 // Behold, the engine of it all!
 // Put in this file befause it makes it easier to type and I'm lazy! :D
@@ -14,4 +14,8 @@ export function useSpring() {
 }
 
 export type Spring = ReturnType<typeof useSpring>[0]
-export type SpringSet = ReturnType<typeof useSpring>[1]
+/**
+ * react-spring v9 replaced the `set` function with a `SpringRef`, so this is the
+ * imperative api (`api.start(...)`) rather than a plain setter.
+ */
+export type SpringApi = ReturnType<typeof useSpring>[1]

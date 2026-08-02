@@ -1,6 +1,6 @@
-/* eslint-disable react/jsx-pascal-case */
+ 
 import React, { forwardRef, useRef, useState, useCallback } from 'react'
-import { Portal } from '@reach/portal'
+import { createPortal } from 'react-dom'
 import { BottomSheet as _BottomSheet } from './BottomSheet'
 import type { Props, RefHandles, SpringEvent } from './types'
 import { useLayoutEffect } from './hooks'
@@ -10,12 +10,34 @@ export type {
   Props as BottomSheetProps,
 } from './types'
 
+// Renders into a `<div data-rsbs-portal>` appended to the end of `<body>`.
+// It has to be a direct child of body: `useAriaHider` walks `body > *` and skips
+// the sheet's own parent node when setting `aria-hidden` on the rest of the page.
+// Children are held back until the node exists so we never call createPortal with
+// a null container, which also keeps this a no-op during SSR.
+function Portal({ children }: { children: React.ReactNode }) {
+  const [mountNode, setMountNode] = useState<HTMLDivElement | null>(null)
+
+  useLayoutEffect(() => {
+    const node = document.createElement('div')
+    node.setAttribute('data-rsbs-portal', '')
+    document.body.appendChild(node)
+    setMountNode(node)
+
+    return () => {
+      document.body.removeChild(node)
+    }
+  }, [])
+
+  return mountNode ? createPortal(children, mountNode) : null
+}
+
 export const BottomSheet = forwardRef<RefHandles, Props>(function BottomSheet(
   { onSpringStart, onSpringEnd, skipInitialTransition, ...props },
   ref
 ) {
   const [mounted, setMounted] = useState(false)
-  const timerRef = useRef<ReturnType<typeof requestAnimationFrame>>()
+  const timerRef = useRef<ReturnType<typeof requestAnimationFrame>>(undefined)
   const lastSnapRef = useRef(null)
   const initialStateRef = useRef<'OPEN' | 'CLOSED'>(
     skipInitialTransition && props.open ? 'OPEN' : 'CLOSED'
@@ -52,7 +74,7 @@ export const BottomSheet = forwardRef<RefHandles, Props>(function BottomSheet(
   if (!mounted) return null
 
   return (
-    <Portal data-rsbs-portal>
+    <Portal>
       <_BottomSheet
         {...props}
         lastSnapRef={lastSnapRef}

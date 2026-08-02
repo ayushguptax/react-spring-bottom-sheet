@@ -2,17 +2,23 @@
 
 import { useCallback, useEffect, useState } from 'react'
 
+// These logs used to be stripped from production builds by
+// babel-plugin-transform-remove-console. That plugin is gone along with the
+// Babel setup, so they're guarded explicitly instead — microbundle replaces
+// process.env.NODE_ENV and then dead-code-eliminates the whole block.
+const dev = process.env.NODE_ENV !== 'production'
+
 export function useReady() {
   const [ready, setReady] = useState(false)
   const [readyMap, updateReadyMap] = useState<{ [key: string]: boolean }>({})
 
   const registerReady = useCallback((key: string) => {
-    console.count(`registerReady:${key}`)
+    if (dev) console.count(`registerReady:${key}`)
     // Register the check we're gonna wait for until it's ready
     updateReadyMap((ready) => ({ ...ready, [key]: false }))
 
     return () => {
-      console.count(`setReady:${key}`)
+      if (dev) console.count(`setReady:${key}`)
       // Set it to ready
       updateReadyMap((ready) => ({ ...ready, [key]: true }))
     }
@@ -22,14 +28,14 @@ export function useReady() {
     const states = Object.values(readyMap)
 
     if (states.length === 0) {
-      console.log('nope nothing registered yet')
+      if (dev) console.log('nope nothing registered yet')
       return
     }
 
     const isReady = states.every(Boolean)
-    console.log('check if we are rready', readyMap, isReady)
+    if (dev) console.log('check if we are rready', readyMap, isReady)
     if (isReady) {
-      console.warn('ready!')
+      if (dev) console.warn('ready!')
       setReady(true)
     }
   }, [readyMap])
