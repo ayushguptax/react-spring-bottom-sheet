@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-`@percivel/react-spring-bottom-sheet` — a fork of [stipsan/react-spring-bottom-sheet](https://github.com/stipsan/react-spring-bottom-sheet) whose reason for existing is React 19 support. The repo is two things at once:
+`@percivel/react-spring-bottom-sheet` — an accessible, gesture-driven bottom sheet for React 16.14–19. The repo is two things at once:
 
 - **The library** (`src/`) — published to npm; `files` is only `dist` + `defaults.json`.
 - **A Next.js docs/demo site** (`pages/`, `docs/`, `public/`) — deployed to Vercel, never published. `docs/` holds demo-only components; `pages/fixtures/*` are the live examples linked from the README.
@@ -93,4 +93,5 @@ Dev-only `console.*` calls in `src/` are guarded by `process.env.NODE_ENV !== 'p
 - Prettier: no semicolons, single quotes. Husky + lint-staged run eslint --fix and prettier on commit. Prettier is deliberately still on v2 — v3 changes `trailingComma` to `all` and would reformat the whole repo.
 - `tsconfig.json` is `strict: false` and is **managed by Next** (it rewrites `moduleResolution`, `jsx`, `incremental` on build). Put library-build settings in `tsconfig.build.json`, not here.
 - Public API surface is `src/types.ts` (`Props`, `RefHandles`, `SpringEvent`) re-exported from `src/index.tsx` as `BottomSheetProps` / `BottomSheetRef`. Prop changes need matching README updates — the README is the API reference.
-- Upstream used semantic-release; this fork versions manually (`npm version` + `prepublishOnly` → `build:dist`). CHANGELOG.md is upstream's and is not maintained here.
+- Versioning is manual (`npm version` + `prepublishOnly` → `build:dist`); there is no release automation.
+- The library is MIT and derives from earlier work by Cody Olsen — [LICENSE](LICENSE) carries both copyright lines and must keep doing so.

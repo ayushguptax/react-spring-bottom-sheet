@@ -1,4 +1,4 @@
-// @stipsan/react-spring => React Spring
+// @scope/react-spring => React Spring
 export function capitalize(str) {
   return str
     .split('/')

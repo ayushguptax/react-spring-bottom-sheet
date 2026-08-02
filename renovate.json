@@ -1,9 +1,6 @@
 {
-  "extends": ["github>stipsan/renovate-presets:auto"],
-  "packageRules": [
-    {
-      "depTypeList": ["dependencies", "peerDependencies"],
-      "automerge": false
-    }
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
   ]
 }

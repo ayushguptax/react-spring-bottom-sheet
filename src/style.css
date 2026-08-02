@@ -61,6 +61,11 @@
   flex-shrink: 0;
   cursor: ns-resize;
   padding: 16px;
+  /* Both are drag targets. touch-action doesn't inherit, so without this the
+     browser can claim the gesture for scrolling before the handler sees it —
+     @use-gesture warns about exactly this. [data-rsbs-scroll] deliberately
+     keeps `auto` so its content can still scroll. */
+  touch-action: none;
 }
 [data-rsbs-header] {
   text-align: center;

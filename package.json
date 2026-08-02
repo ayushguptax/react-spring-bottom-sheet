@@ -1,17 +1,17 @@
 {
   "name": "@percivel/react-spring-bottom-sheet",
-  "description": "Fork of react-spring-bottom-sheet updated to support React 19. ✨ Accessible, 🪄 Delightful, and 🤯 Performant.",
+  "description": "\u2728 Accessible, \ud83e\ude84 Delightful, and \ud83e\udd2f Performant bottom sheet for React.",
   "license": "MIT",
-  "homepage": "https://github.com/ayushgupta-1/react-spring-bottom-sheet#readme",
+  "homepage": "https://github.com/ayushguptax/react-spring-bottom-sheet#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ayushgupta-1/react-spring-bottom-sheet.git"
+    "url": "https://github.com/ayushguptax/react-spring-bottom-sheet.git"
   },
   "contributors": [
     "Ayush Gupta"
   ],
   "bugs": {
-    "url": "https://github.com/ayushgupta-1/react-spring-bottom-sheet/issues"
+    "url": "https://github.com/ayushguptax/react-spring-bottom-sheet/issues"
   },
   "version": "3.4.5",
   "main": "dist/index.js",
@@ -123,10 +123,6 @@
     "*.{js,jsx,ts,tsx}": "eslint --fix",
     "*.{js,jsx,ts,tsx,md,html,css,yml,json}": "prettier --write",
     "package.json": "prettier-package-json --write"
-  },
-  "meta": {
-    "twitter:site": "@stipsan",
-    "twitter:image:src": "https://react-spring-bottom-sheet.cocody.dev/somecard.png"
   },
   "prettier": {
     "semi": false,

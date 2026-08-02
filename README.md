@@ -2,20 +2,13 @@
 [![npm version](https://img.shields.io/npm/v/@percivel/react-spring-bottom-sheet.svg?style=flat-square)](https://www.npmjs.com/package/@percivel/react-spring-bottom-sheet)
 [![gzip size][gzip-badge]][unpkg-dist]
 [![size][size-badge]][unpkg-dist]
-[![module formats: cjs, es, and modern][module-formats-badge]][unpkg-dist]
+[![module formats: cjs and es][module-formats-badge]][unpkg-dist]
 
 # @percivel/react-spring-bottom-sheet
 
-## What's changed
-
-- Updated peer dependencies to include React 19
-- Migrated off dependencies that blocked React 19: `@xstate/react` v1 (peer-capped at React 17) is now v6 on xstate v5, `react-spring` v8 is now `@react-spring/web` v10, `react-use-gesture` is now `@use-gesture/react` v10, and `@reach/portal` is replaced by `react-dom`'s `createPortal`
-- `body-scroll-lock` swapped for the maintained `body-scroll-lock-upgrade` fork, and the `@juggle/resize-observer` ponyfill dropped for the native API
-- Fully tested with latest dependencies
-
 **@percivel/react-spring-bottom-sheet** is built on top of **[@react-spring/web]** and **[@use-gesture/react]**. It combines accessibility with delightful animations and full keyboard/screen reader support. All animations use CSS custom properties to allow complete styling control from CSS alone.
 
-> Fork of [react-spring-bottom-sheet](https://github.com/stipsan/react-spring-bottom-sheet) updated to support **React 19**.
+Supports React 16.14, 17, 18 and 19.
 
 ---
 
@@ -108,27 +101,29 @@ module.exports = {
 }
 ```
 
-# [Demos](https://react-spring-bottom-sheet.cocody.dev/)
+# Demos
 
-## [Basic](https://react-spring-bottom-sheet.cocody.dev/fixtures/simple)
+Run `npm run dev` and open http://localhost:3000 to try these locally.
+
+## Basic
 
 > [View demo code](/pages/fixtures/simple.tsx#L44-L48)
 
 MVP example, showing what you get by implementing `open`, `onDismiss` and a single **snap point** always set to `minHeight`.
 
-## [Snap points & overflow](https://react-spring-bottom-sheet.cocody.dev/fixtures/scrollable)
+## Snap points & overflow
 
 > [View demo code](/pages/fixtures/scrollable.tsx#L86-L97)
 
 A more elaborate example that showcases how snap points work. It also shows how it behaves if you want it to be open by default, and not closable. Notice how it responds if you resize the window, or scroll to the bottom and starts adjusting the height of the sheet without scrolling back up first.
 
-## [Sticky header & footer](https://react-spring-bottom-sheet.cocody.dev/fixtures/sticky)
+## Sticky header & footer
 
 > [View demo code](/pages/fixtures/sticky.tsx#L41-L61)
 
 If you provide either a `header` or `footer` prop you'll enable the special behavior seen in this example. And they're not just sticky positioned, both areas support touch gestures.
 
-## [Non-blocking overlay mode](https://react-spring-bottom-sheet.cocody.dev/fixtures/aside)
+## Non-blocking overlay mode
 
 > [View demo code](/pages/fixtures/aside.tsx#L41-L53)
 
@@ -436,9 +431,9 @@ export default function Example() {
 - Phone frame used in logo: [Mono Devices 1.0](https://www.figma.com/community/file/896042888090872154/Mono-Devices-1.0)
 - iPhone frame used to wrap examples: [iOS 14 UI Kit for Figma](<https://www.figma.com/community/file/858143367356468985/(Variants)-iOS-%26-iPadOS-14-UI-Kit-for-Figma>)
 
-[gzip-badge]: http://img.badgesize.io/https://unpkg.com/react-spring-bottom-sheet/dist/index.es.js?compression=gzip&label=gzip%20size&style=flat-square
-[size-badge]: http://img.badgesize.io/https://unpkg.com/react-spring-bottom-sheet/dist/index.es.js?label=size&style=flat-square
-[unpkg-dist]: https://unpkg.com/react-spring-bottom-sheet/dist/
-[module-formats-badge]: https://img.shields.io/badge/module%20formats-cjs%2C%20es%2C%20modern-green.svg?style=flat-square
+[gzip-badge]: http://img.badgesize.io/https://unpkg.com/@percivel/react-spring-bottom-sheet/dist/index.es.js?compression=gzip&label=gzip%20size&style=flat-square
+[size-badge]: http://img.badgesize.io/https://unpkg.com/@percivel/react-spring-bottom-sheet/dist/index.es.js?label=size&style=flat-square
+[unpkg-dist]: https://unpkg.com/@percivel/react-spring-bottom-sheet/dist/
+[module-formats-badge]: https://img.shields.io/badge/module%20formats-cjs%2C%20es-green.svg?style=flat-square
 [@react-spring/web]: https://github.com/pmndrs/react-spring
 [@use-gesture/react]: https://github.com/pmndrs/use-gesture

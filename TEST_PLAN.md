@@ -200,7 +200,7 @@ Not bugs — confirm you're happy with each:
    Add an `exports` map if you want it back.
 3. **`dist/index.d.mts` is new** (tsup emits types per format). Harmless.
 4. **Published CSS is smaller** — legacy vendor prefixes and pre-custom-property fallbacks dropped.
-5. **`semantic-release` removed** from devDependencies. It was unused; the fork versions manually.
+5. **`semantic-release` removed** from devDependencies. It was unused; this project versions manually.
 6. **Prettier stays on v2.** v3 would reformat every file and bury the real diff.
 
 ## Follow-ups not done here
