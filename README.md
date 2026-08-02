@@ -13,8 +13,6 @@
 
 **@percivel/react-spring-bottom-sheet** is built on top of **[react-spring]** and **[react-use-gesture]**. It combines accessibility with delightful animations and full keyboard/screen reader support. All animations use CSS custom properties to allow complete styling control from CSS alone.
 
-> Fork of [react-spring-bottom-sheet](https://github.com/stipsan/react-spring-bottom-sheet) updated to support **React 19**.
-
 ---
 
 # Installation

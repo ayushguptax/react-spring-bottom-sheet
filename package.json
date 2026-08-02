@@ -1,19 +1,19 @@
 {
   "name": "@percivel/react-spring-bottom-sheet",
-  "description": "Fork of react-spring-bottom-sheet updated to support React 19. ✨ Accessible, 🪄 Delightful, and 🤯 Performant.",
+  "description": "✨ Accessible, 🪄 Delightful, and 🤯 Performant bottom sheet for React.",
   "license": "MIT",
-  "homepage": "https://github.com/ayushgupta-1/react-spring-bottom-sheet#readme",
+  "homepage": "https://github.com/ayushguptax/react-spring-bottom-sheet#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ayushgupta-1/react-spring-bottom-sheet.git"
+    "url": "https://github.com/ayushguptax/react-spring-bottom-sheet.git"
   },
   "contributors": [
     "Ayush Gupta"
   ],
   "bugs": {
-    "url": "https://github.com/ayushgupta-1/react-spring-bottom-sheet/issues"
+    "url": "https://github.com/ayushguptax/react-spring-bottom-sheet/issues"
   },
-  "version": "3.4.5",
+  "version": "3.4.6",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
