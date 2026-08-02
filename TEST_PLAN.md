@@ -176,12 +176,12 @@ The point of the whole exercise:
 npm run build:dist
 npm pack
 # in a scratch React 19 app:
-npm install /path/to/percivel-react-spring-bottom-sheet-3.4.5.tgz
+npm install /path/to/react-spring-modal-sheet-4.0.0.tgz
 ```
 
 - [ ] Installs into a **React 19** app with no `ERESOLVE` and no `--legacy-peer-deps`
-- [ ] `import { BottomSheet } from '@percivel/react-spring-bottom-sheet'` works
-- [ ] `import '@percivel/react-spring-bottom-sheet/dist/style.css'` works
+- [ ] `import { BottomSheet } from 'react-spring-modal-sheet'` works
+- [ ] `import 'react-spring-modal-sheet/dist/style.css'` works
 - [ ] TypeScript: `BottomSheetRef` / `BottomSheetProps` resolve, `ref.current.snapTo(...)` type-checks
 - [ ] Works in a **Vite** app (ESM) and a **Next** app (CJS + ESM)
 

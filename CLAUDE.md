@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-`@percivel/react-spring-bottom-sheet` — an accessible, gesture-driven bottom sheet for React 16.14–19. The repo is two things at once:
+`react-spring-modal-sheet` — an accessible, gesture-driven bottom sheet for React 16.14–19. The repo is two things at once:
 
 - **The library** (`src/`) — published to npm; `files` is only `dist` + `defaults.json`.
 - **A Next.js docs/demo site** (`pages/`, `docs/`, `public/`) — deployed to Vercel, never published. `docs/` holds demo-only components; `pages/fixtures/*` are the live examples linked from the README.

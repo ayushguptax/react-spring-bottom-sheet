@@ -1,6 +1,6 @@
 {
-  "name": "@percivel/react-spring-bottom-sheet",
-  "description": "\u2728 Accessible, \ud83e\ude84 Delightful, and \ud83e\udd2f Performant bottom sheet for React.",
+  "name": "react-spring-modal-sheet",
+  "description": "✨ Accessible, 🪄 Delightful, and 🤯 Performant bottom sheet for React.",
   "license": "MIT",
   "homepage": "https://github.com/ayushguptax/react-spring-bottom-sheet#readme",
   "repository": {
@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/ayushguptax/react-spring-bottom-sheet/issues"
   },
-  "version": "3.4.5",
+  "version": "4.0.0",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [

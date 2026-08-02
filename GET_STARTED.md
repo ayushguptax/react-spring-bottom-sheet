@@ -3,18 +3,21 @@
 ## Installation
 
 ```bash
-npm i @percivel/react-spring-bottom-sheet
+npm i react-spring-modal-sheet
 ```
+
+> Previously published as `@percivel/react-spring-bottom-sheet`, now deprecated and frozen at
+> `3.4.5`. The component API is unchanged — migrating is a rename of your imports.
 
 ## Basic usage
 
 ```jsx
 import { useState } from 'react'
-import { BottomSheet } from '@percivel/react-spring-bottom-sheet'
+import { BottomSheet } from 'react-spring-modal-sheet'
 
 // if setting up the CSS is tricky, you can add this to your page somewhere:
-// <link rel="stylesheet" href="https://unpkg.com/@percivel/react-spring-bottom-sheet/dist/style.css" crossorigin="anonymous">
-import '@percivel/react-spring-bottom-sheet/dist/style.css'
+// <link rel="stylesheet" href="https://unpkg.com/react-spring-modal-sheet/dist/style.css" crossorigin="anonymous">
+import 'react-spring-modal-sheet/dist/style.css'
 
 export default function Example() {
   const [open, setOpen] = useState(false)
@@ -33,7 +36,7 @@ TS support is baked in, and if you're using the `snapTo` API use `BottomSheetRef
 
 ```tsx
 import { useRef } from 'react'
-import { BottomSheet, BottomSheetRef } from '@percivel/react-spring-bottom-sheet'
+import { BottomSheet, BottomSheetRef } from 'react-spring-modal-sheet'
 
 export default function Example() {
   const sheetRef = useRef<BottomSheetRef>()
@@ -79,7 +82,7 @@ module.exports = {
   plugins: {
     // Ensures the default variables are available
     'postcss-custom-properties-fallback': {
-      importFrom: require.resolve('@percivel/react-spring-bottom-sheet/defaults.json'),
+      importFrom: require.resolve('react-spring-modal-sheet/defaults.json'),
     },
   },
 }
